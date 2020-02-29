@@ -3,12 +3,8 @@
 
   Steps:
   1. Connect to the access point "yourAp"
-  2. Point your web browser to http://192.168.4.1/H to turn the LED on or http://192.168.4.1/L to turn it off
-     OR
-     Run raw TCP "GET /H" and "GET /L" on PuTTY terminal with 192.168.4.1 as IP address and 80 as port
-
-  Created for arduino-esp32 on 04 July, 2018
-  by Elochukwu Ifediora (fedy0)
+  2. Point your web browser to http://192.168.4.1
+  3. This returns a json blob
 */
 
 #include <WiFi.h>
@@ -56,12 +52,13 @@ void loop() {
             // and a content-type so the client knows what's coming, then a blank line:
             client.println("HTTP/1.1 200 OK");
             client.println("Content-type:application/json");
-            client.println("Access-Control-Allow-Origin: *");
+            client.println("Access-Control-Allow-Origin: *");  // Fuck CORS with a cactus
             client.println();
 
 
             int rain_value = analogRead(A0);
             // the content of the HTTP response follows the header:
+            // Manually put together JSON
             client.print("{\"rain_value\": ");
             client.print(rain_value);
             client.print("}");
