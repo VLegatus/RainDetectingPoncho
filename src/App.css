@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: black;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -27,7 +29,12 @@
 .App-link {
   color: #61dafb;
 }
-
+.titleThing{
+  color: magenta;
+  font-size: 3em;
+  margin: 0;
+  
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
